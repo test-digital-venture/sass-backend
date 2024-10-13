@@ -7,8 +7,8 @@ jobs:
     steps:
     - name: Checkout latest Code
       uses: actions/checkout@v3
-      with:
-        path: "sass-backend"
+      # with:
+      #   script:
 
     - name: Install Node.js
       uses: actions/setup-node@v3
