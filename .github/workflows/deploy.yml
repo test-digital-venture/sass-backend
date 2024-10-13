@@ -18,16 +18,16 @@ jobs:
       uses: appleboy/ssh-action@v1.1.0
       with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rlgoDzvc -i --delete"
+          # ARGS: "-rlgoDzvc -i --delete"
           source: "."
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.HOST_PORT }}
           target: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/dist/, /node_modules/, .git/"
+          # EXCLUDE: "/dist/, /node_modules/, .git/"
           script: |
             whoami
-            la -la
+            ls -la
             pwd
       
 
