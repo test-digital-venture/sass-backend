@@ -19,13 +19,14 @@ jobs:
       with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # ARGS: "-rlgoDzvc -i --delete"
-          source: "."
+          source: "sass-backend"
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.HOST_PORT }}
           target: ${{ secrets.REMOTE_TARGET }}
           # EXCLUDE: "/dist/, /node_modules/, .git/"
           script: |
+            cd ${{ secrets.REMOTE_TARGET }}
             whoami
             ls -la
             pwd
