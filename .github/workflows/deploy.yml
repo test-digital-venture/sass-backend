@@ -15,16 +15,20 @@ jobs:
     - name: Run build task
       run: npm run build --if-present
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
+      uses: appleboy/ssh-action@v1.1.0
       with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "."
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          source: "."
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          port: ${{ secrets.HOST_PORT }}
+          target: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/dist/, /node_modules/, .git/"
-      run: ls -la && pwd
+          script: |
+            whoami
+            la -la
+            pwd
       
 
 
