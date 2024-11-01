@@ -1,4 +1,18 @@
-import { integer, pgTable, varchar, boolean, text } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  varchar,
+  boolean,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
+
+// columns.helpers.ts
+const timestamps = {
+  updated_at: timestamp(),
+  created_at: timestamp().defaultNow().notNull(),
+  deleted_at: timestamp(),
+};
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -6,6 +20,8 @@ export const usersTable = pgTable("users", {
   last_name: varchar({ length: 255 }).notNull(),
   age: integer().notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
+  password: varchar({ length: 255 }).notNull(),
+  ...timestamps,
 });
 
 export const postsTable = pgTable("posts", {
@@ -21,6 +37,7 @@ export const postsTable = pgTable("posts", {
       onDelete: "restrict",
       onUpdate: "cascade",
     }),
+  ...timestamps,
 });
 
 export const commentsTable = pgTable("comments", {
@@ -38,4 +55,5 @@ export const commentsTable = pgTable("comments", {
       onDelete: "restrict",
       onUpdate: "cascade",
     }),
+  ...timestamps,
 });
