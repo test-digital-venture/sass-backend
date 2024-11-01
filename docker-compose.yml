@@ -1,5 +1,14 @@
 services:
   sass-backend:
     build: .
+    container_name: sass-backend
     ports:
       - 3000:3000
+    networks:
+      - shared_network
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+
+networks:
+  shared_network:
+    external: true

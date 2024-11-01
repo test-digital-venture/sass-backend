@@ -1,0 +1,1 @@
+ALTER TABLE "posts" ADD COLUMN "can_comment" boolean DEFAULT true NOT NULL;

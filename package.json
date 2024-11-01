@@ -6,9 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.ts",
     "build": "tsc",
-    "start": "node ./dist/index.js",
-    "migrate:new": "npx drizzle-kit generate",
-    "migrate:deploy": "npx drizzle-kit migrate"
+    "start": "node ./dist/src/index.js",
+    "migrate-new": "npx drizzle-kit generate",
+    "migrate-deploy": "npx drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
